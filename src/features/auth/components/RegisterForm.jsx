@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useState } from "react";
+import validateRegister from "../validations/validate-register";
 
 function RegisterForm() {
   const [input, setInput] = useState({});
@@ -10,6 +11,12 @@ function RegisterForm() {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    const validateError = validateRegister(input);
+    if (validateError) {
+      return setError(validateError);
+    }
+
+    onSuccess();
   };
 
   const handleChangeInput = (e) => {
