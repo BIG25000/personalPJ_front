@@ -1,11 +1,8 @@
 import Header from "./layouts/Header";
+import Router from "./routes";
 
 function App() {
-  return (
-    <>
-      <Header />
-    </>
-  );
+  return <Router />;
 }
 
 export default App;
