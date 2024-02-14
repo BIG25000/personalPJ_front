@@ -15,8 +15,8 @@ function RegisterForm() {
     if (validateError) {
       return setError(validateError);
     }
-
-    onSuccess();
+    document.getElementById("register").close();
+    document.getElementById("login").showModal();
   };
 
   const handleChangeInput = (e) => {

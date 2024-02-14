@@ -11,7 +11,7 @@ function Header() {
         <input
           type="text"
           placeholder="search"
-          className="input input-bordered w-1/5 max-w-xs h-10"
+          className="input input-bordered w-1/5 max-w-xs h-10 "
         />
       </div>
       <div className="flex-none gap-2">

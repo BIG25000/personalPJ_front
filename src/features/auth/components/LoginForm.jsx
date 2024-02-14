@@ -4,6 +4,11 @@ import { useState } from "react";
 
 function LoginForm() {
   const [isRegister, setIsRegister] = useState(false);
+
+  const handleModal = () => {
+    document.getElementById("register").showModal();
+    document.getElementById("login").close();
+  };
   return (
     <>
       <h1 className="text-center font-medium">Login</h1>
@@ -36,7 +41,7 @@ function LoginForm() {
               </button>
 
               <button
-                onClick={() => setIsRegister(true)}
+                onClick={handleModal}
                 className="label-text-alt underline"
               >
                 register
