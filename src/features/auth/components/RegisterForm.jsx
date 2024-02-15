@@ -16,7 +16,6 @@ function RegisterForm() {
       return setError(validateError);
     }
     document.getElementById("register").close();
-    document.getElementById("login").showModal();
   };
 
   const handleChangeInput = (e) => {

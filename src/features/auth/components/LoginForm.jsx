@@ -1,14 +1,6 @@
 import React from "react";
 
-import { useState } from "react";
-
 function LoginForm() {
-  const [isRegister, setIsRegister] = useState(false);
-
-  const handleModal = () => {
-    document.getElementById("register").showModal();
-    document.getElementById("login").close();
-  };
   return (
     <>
       <h1 className="text-center font-medium">Login</h1>
@@ -35,18 +27,6 @@ function LoginForm() {
               placeholder="password"
               className="input input-bordered w-full max-w-xs"
             />
-            <div className="label">
-              <button className="label-text-alt underline">
-                forget password?
-              </button>
-
-              <button
-                onClick={handleModal}
-                className="label-text-alt underline"
-              >
-                register
-              </button>
-            </div>
           </label>
         </div>
       </div>
