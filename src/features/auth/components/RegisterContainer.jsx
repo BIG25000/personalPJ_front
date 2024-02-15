@@ -11,6 +11,7 @@ function RegisterContainer() {
         <Modal title="Register" id="register" button="underline text-md">
           <RegisterForm />
         </Modal>
+        <button className="btn bg-greenTwo text-egg">GUEST ☻</button>
       </div>
     </>
   );

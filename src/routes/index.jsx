@@ -4,6 +4,8 @@ import AllTripPage from "../pages/AllTripPage";
 import LoginPage from "../pages/LoginPage";
 import RedirectIfAuthenticated from "../features/auth/components/RedirectIfAuthenticated";
 import { Outlet } from "react-router-dom";
+import Header from "../layouts/Header";
+import ProtectedRoute from "../features/auth/components/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -18,17 +20,21 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <>
-        <header>BBBBBBB</header>
+        <Header />
         <Outlet />
       </>
     ),
     children: [
       {
-        path: "/trip",
-        element: <TripPage />,
+        path: "",
+        element: (
+          <ProtectedRoute>
+            <TripPage />
+          </ProtectedRoute>
+        ),
       },
       {
-        path: "/allTrip",
+        path: "allTrip",
         element: <AllTripPage />,
       },
     ],
