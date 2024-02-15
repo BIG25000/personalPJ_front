@@ -1,5 +1,5 @@
 import React from "react";
-
+import { toast } from "react-toastify";
 import { useState } from "react";
 import validateRegister from "../validations/validate-register";
 import useAuth from "../../../hooks/use-auth";
@@ -16,12 +16,13 @@ function RegisterForm() {
       if (validateError) {
         return setError(validateError);
       }
-      console.log(input);
       await register(input);
+      toast.success("register success");
     } catch (err) {
-      if (err.response?.data.message === "EMAIL_IN_USE") {
-        setError({ email: "already in use" });
+      if (err.response?.data.message === "EMAIL_IN_USER") {
+        return setError({ emai: "already in use" });
       }
+      toast.error(err.response?.data.message);
     }
     document.getElementById("register").close();
   };
@@ -47,6 +48,9 @@ function RegisterForm() {
               onChange={handleChangeInput}
               className="input input-bordered w-full"
             />
+            {error ? (
+              <small className="text-red-600">{error.email}</small>
+            ) : null}
           </label>
         </div>
         <div>
@@ -63,6 +67,9 @@ function RegisterForm() {
               className="input input-bordered w-full max-w-xs"
             />
             <div className="label"></div>
+            {error ? (
+              <small className="text-red-600">{error.firstName}</small>
+            ) : null}
           </label>
         </div>
         <div>
@@ -79,6 +86,9 @@ function RegisterForm() {
               className="input input-bordered w-full max-w-xs"
             />
             <div className="label"></div>
+            {error ? (
+              <small className="text-red-600">{error.lastName}</small>
+            ) : null}
           </label>
         </div>
         <div>
@@ -94,6 +104,9 @@ function RegisterForm() {
               onChange={handleChangeInput}
               className="input input-bordered w-full max-w-xs"
             />
+            {error ? (
+              <small className="text-red-600">{error.password}</small>
+            ) : null}
             <div className="label"></div>
           </label>
         </div>
@@ -110,6 +123,9 @@ function RegisterForm() {
               onChange={handleChangeInput}
               className="input input-bordered w-full max-w-xs"
             />
+            {error ? (
+              <small className="text-red-600">{error.confirmPassword}</small>
+            ) : null}
             <div className="label"></div>
           </label>
         </div>
@@ -126,6 +142,7 @@ function RegisterForm() {
               onChange={handleChangeInput}
               className="input input-bordered w-full max-w-xs"
             />
+
             <div className="label"></div>
           </label>
         </div>
@@ -176,6 +193,9 @@ function RegisterForm() {
               value={input.mobile}
               className="input input-bordered w-full max-w-xs"
             />
+            {error ? (
+              <small className="text-red-600">{error.mobile}</small>
+            ) : null}
             <div className="label"></div>
           </label>
         </div>
@@ -192,6 +212,9 @@ function RegisterForm() {
               value={input.nameEmergency}
               className="input input-bordered w-full max-w-xs"
             />
+            {error ? (
+              <small className="text-red-600">{error.nameEmergency}</small>
+            ) : null}
             <div className="label"></div>
           </label>
         </div>
@@ -208,6 +231,9 @@ function RegisterForm() {
               value={input.mobileEmergency}
               className="input input-bordered w-full max-w-xs"
             />
+            {error ? (
+              <small className="text-red-600">{error.mobileEmergency}</small>
+            ) : null}
             <div className="label"></div>
           </label>
         </div>
