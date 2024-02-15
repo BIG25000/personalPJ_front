@@ -2,18 +2,26 @@ import React from "react";
 
 import { useState } from "react";
 import validateRegister from "../validations/validate-register";
+import useAuth from "../../../hooks/use-auth";
 
 function RegisterForm() {
   const [input, setInput] = useState({});
-  const [error, setError] = useState({
-    firstName: "Please fill your first name",
-  });
+  const [error, setError] = useState({});
+  const { register } = useAuth();
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    const validateError = validateRegister(input);
-    if (validateError) {
-      return setError(validateError);
+  const handleFormSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const validateError = validateRegister(input);
+      if (validateError) {
+        return setError(validateError);
+      }
+      console.log(input);
+      await register(input);
+    } catch (err) {
+      if (err.response?.data.message === "EMAIL_IN_USE") {
+        setError({ email: "already in use" });
+      }
     }
     document.getElementById("register").close();
   };
@@ -150,9 +158,9 @@ function RegisterForm() {
             <option disabled selected>
               Pick your gender
             </option>
-            <option>Male</option>
-            <option>Female</option>
-            <option>Other</option>
+            <option>MALE</option>
+            <option>FEMALE</option>
+            <option>OTHER</option>
           </select>
         </div>
         <div className="col-span-full">
