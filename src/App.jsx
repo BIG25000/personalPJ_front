@@ -12,7 +12,6 @@ function App() {
         theme="colored"
         transition={Slide}
       />
-      ;
     </>
   );
 }

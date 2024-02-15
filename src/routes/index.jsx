@@ -1,9 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
 import TripPage from "../pages/TripPage";
 import AllTripPage from "../pages/AllTripPage";
 import LoginPage from "../pages/LoginPage";
 import RedirectIfAuthenticated from "../features/auth/components/RedirectIfAuthenticated";
+import { Outlet } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
@@ -14,9 +14,25 @@ const router = createBrowserRouter([
       </RedirectIfAuthenticated>
     ),
   },
-
-  { path: "/trip", element: <TripPage /> },
-  { path: "/allTrip", element: <AllTripPage /> },
+  {
+    path: "/",
+    element: (
+      <>
+        <header>BBBBBBB</header>
+        <Outlet />
+      </>
+    ),
+    children: [
+      {
+        path: "/trip",
+        element: <TripPage />,
+      },
+      {
+        path: "/allTrip",
+        element: <AllTripPage />,
+      },
+    ],
+  },
 ]);
 
 export default function Router() {
