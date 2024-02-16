@@ -2,8 +2,11 @@ import React from "react";
 import { useState } from "react";
 import Modal from "../../../components/Modal";
 import RegisterForm from "./RegisterForm";
+import useAuth from "../../../hooks/use-auth";
+import { Link } from "react-router-dom";
 
 function RegisterContainer() {
+  const { guestId } = useAuth();
   return (
     <>
       <div className="flex justify-between items-center">
@@ -11,7 +14,13 @@ function RegisterContainer() {
         <Modal title="Register" id="register" button="underline text-md">
           <RegisterForm />
         </Modal>
-        <button className="btn bg-greenTwo text-egg">GUEST ☻</button>
+        <Link
+          onClick={guestId}
+          to="/guest"
+          className="btn bg-greenTwo text-egg"
+        >
+          GUEST ☻
+        </Link>
       </div>
     </>
   );

@@ -39,8 +39,16 @@ function AuthContextProvider({ children }) {
     clearToken();
   };
 
+  const guestId = async () => {
+    const res = await authApi.guestIn();
+    setAuthUser(res.data);
+    storeToken(res.data.accessToken);
+  };
+
   return (
-    <AuthContext.Provider value={{ register, authUser, login, logout }}>
+    <AuthContext.Provider
+      value={{ register, authUser, login, logout, guestId }}
+    >
       {children}
     </AuthContext.Provider>
   );

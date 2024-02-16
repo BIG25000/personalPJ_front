@@ -6,6 +6,7 @@ import RedirectIfAuthenticated from "../features/auth/components/RedirectIfAuthe
 import { Outlet } from "react-router-dom";
 import Header from "../layouts/Header";
 import ProtectedRoute from "../features/auth/components/ProtectedRoute";
+import HeaderGuest from "../layouts/HeaderGuest";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,25 @@ const router = createBrowserRouter([
             <TripPage />
           </ProtectedRoute>
         ),
+      },
+      {
+        path: "allTrip",
+        element: <AllTripPage />,
+      },
+    ],
+  },
+  {
+    path: "/guest",
+    element: (
+      <>
+        <HeaderGuest />
+        <Outlet />
+      </>
+    ),
+    children: [
+      {
+        path: "",
+        element: <TripPage />,
       },
       {
         path: "allTrip",
