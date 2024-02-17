@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/use-auth";
+import { useRef } from "react";
 
-function DropdownGuest() {
-  const { logout } = useAuth();
+function Dropdown() {
+  const {
+    authUser: { firstName, lastName },
+    logout,
+  } = useAuth();
 
   return (
-    <div className="dropdown">
-      <div tabIndex={0} role="button" className="btn m-1 bg-egg">
-        NATTHAPONG SUMSUM
+    <div className="dropdown dropdown-end">
+      <div tabIndex={0} role="button" className="btn bg-egg">
+        {firstName} {lastName}
       </div>
       <ul
         tabIndex={0}
@@ -26,4 +30,4 @@ function DropdownGuest() {
   );
 }
 
-export default DropdownGuest;
+export default Dropdown;

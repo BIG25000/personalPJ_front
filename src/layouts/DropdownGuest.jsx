@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/use-auth";
 
-function Dropdown() {
+function DropdownGuest() {
   const { logout } = useAuth();
 
   return (
@@ -26,4 +26,4 @@ function Dropdown() {
   );
 }
 
-export default Dropdown;
+export default DropdownGuest;

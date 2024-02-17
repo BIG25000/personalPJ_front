@@ -5,12 +5,15 @@ import Modal from "../components/Modal";
 import Dropdown from "./Dropdown";
 import Search from "./Search";
 import DropdownGuest from "./DropdownGuest";
+import { Link } from "react-router-dom";
 
 function HeaderGuest() {
   return (
     <div className="navbar bg-greenOne text-egg">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl text-egg">ไม่เดิน</a>
+        <Link to="/guest" className="btn btn-ghost text-xl text-egg">
+          ไม่เดิน
+        </Link>
         <Search />
       </div>
       <div className="justify-self-end">

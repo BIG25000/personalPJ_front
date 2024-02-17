@@ -8,7 +8,7 @@ import { useEffect } from "react";
 export const AuthContext = createContext();
 
 function AuthContextProvider({ children }) {
-  const [authUser, setAuthUser] = useState(null);
+  const [authUser, setAuthUser] = useState("");
 
   useEffect(() => {
     if (getToken()) {
@@ -35,7 +35,7 @@ function AuthContextProvider({ children }) {
   };
 
   const logout = () => {
-    setAuthUser(null);
+    setAuthUser(""); // ต้องเป็นสตริง STR
     clearToken();
   };
 
