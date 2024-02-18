@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-function TripForm() {
+function TripForm({ onSubmit }) {
   const [input, setInput] = useState("");
   const [image, setImage] = useState(null);
   const fileInputEl = useRef(null);
@@ -11,18 +11,37 @@ function TripForm() {
   const handleSubmitForm = async (e) => {
     try {
       e.preventDefault();
-
-      if (!input.trim() && !image) {
-        return toast.error("Please enter input or select image");
-      }
+      // const newStartDate = new Date(input.startDate);
+      // input.startDate = `${newStartDate}`;
+      // input.endDate = new Date(input.endDate);
+      console.log(input);
 
       const formData = new FormData();
-      if (input) {
-        formData.append("input", input);
+      if (
+        input.title &&
+        input.location &&
+        input.startDate &&
+        input.endDate &&
+        input.description &&
+        input.meetingPlace &&
+        input.numPeople
+      ) {
+        formData.append("title", input.title);
+        formData.append("location", input.location);
+        formData.append("startDate", input.startDate);
+        formData.append("endDate", input.endDate);
+        formData.append("description", input.description);
+        formData.append("meetingPlace", input.meetingPlace);
+        formData.append("numPeople", input.numPeople);
+      } else {
+        return toast.error("กรอกให้ครบนะจ๊ะ");
       }
+
       if (image) {
         formData.append("image", image);
       }
+
+      console.log(formData);
 
       await onSubmit(formData);
       toast.success("create a new trip success");
@@ -30,6 +49,7 @@ function TripForm() {
       console.log(err);
       toast.error(err.response?.data.message);
     }
+    document.getElementById("creatTrip").close();
   };
 
   const handleChangeInput = (e) => {
@@ -52,7 +72,7 @@ function TripForm() {
               placeholder="ลำคลองงู"
               className="input input-bordered w-full"
               name="title"
-              value={input.tilte}
+              value={input.title}
               onChange={handleChangeInput}
             />
           </label>

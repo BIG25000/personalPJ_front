@@ -1,21 +1,18 @@
-import React from "react";
+function Card({ trip }) {
+  const { title, startDate, endDate, location, image } = trip;
 
-function Card() {
   return (
-    <div className="card card-side bg-greenTwo text-egg shadow-xl">
-      <figure className="w-[40rem]">
-        <img
-          src="https://c4.wallpaperflare.com/wallpaper/337/871/597/naruto-shippuuden-anime-uzumaki-naruto-uchiha-sasuke-wallpaper-preview.jpg"
-          alt="Movie"
-        />
+    <div className="card card-compact w-96 bg-greenTwo text-egg shadow-xl">
+      <figure>
+        <img src={image} alt="Shoes" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">ภูสอยดาว</h2>
-        <p>Click the button to watch on Jetflix app.</p>
+        <h2 className="card-title underline">title : {title}</h2>
+        <p>location : {location}</p>
+        <p>startDate : {startDate}</p>
+        <p>endDate : {endDate}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-egg text-greenOne">
-            view detail trip
-          </button>
+          <button className="btn bg-egg text-greenTwo">view detail trip</button>
         </div>
       </div>
     </div>

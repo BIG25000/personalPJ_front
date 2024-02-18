@@ -1,12 +1,17 @@
 import React from "react";
-import { useState } from "react";
 import Modal from "../../../components/Modal";
 import TripForm from "./TripForm";
-import RegisterForm from "../../auth/components/RegisterForm";
 import { Link } from "react-router-dom";
+import useTrip from "../hooks/use-trip";
 
 function CreateTripContainer() {
-  const [isOpen, setIsOpen] = useState(false);
+  const { createTrip } = useTrip();
+
+  const submitTripForm = async (formData) => {
+    await createTrip(formData);
+    console.log(formData);
+  };
+
   return (
     <>
       <div className="flex justify-between mt-5 mx-10 items-center">
@@ -18,10 +23,10 @@ function CreateTripContainer() {
         </div>
         <Modal
           title="Create Trip"
-          id="register"
+          id="creatTrip"
           button="btn bg-greenOne text-egg"
         >
-          <TripForm />
+          <TripForm onSubmit={submitTripForm} />
         </Modal>
       </div>
     </>
