@@ -1,6 +1,6 @@
 import React from "react";
-import MiddleBar from "../features/allTrip/components/MiddleBar";
 import TripContextProvider from "../features/trip/contexts/TripContext";
+import MiddleBar from "../features/tripId/components/MiddleBar";
 
 function TripIDPage() {
   return (
