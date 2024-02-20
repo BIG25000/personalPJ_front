@@ -7,7 +7,7 @@ export const TripContext = createContext();
 
 export default function TripContextProvider({ children }) {
   const [trips, setTrips] = useState([]);
-  console.log("trips", trips);
+  // console.log("trips", trips);
 
   useEffect(() => {
     tripApi
@@ -20,8 +20,12 @@ export default function TripContextProvider({ children }) {
     await tripApi.createTrip(formData);
   };
 
+  const createJoinTrip = async (userJoin) => {
+    await tripApi.createJoinTrip(userJoin);
+  };
+
   return (
-    <TripContext.Provider value={{ createTrip, trips }}>
+    <TripContext.Provider value={{ createTrip, trips, createJoinTrip }}>
       {children}
     </TripContext.Provider>
   );

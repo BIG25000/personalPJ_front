@@ -7,16 +7,17 @@ import { useState } from "react";
 function CardList({ layout }) {
   const { trips } = useTrip();
 
-  const test = trips.sort((a, b) => {
-    if (a.startDate < b.startDate) {
-      return -1;
-    }
-    if (a.startDate > b.startDate) {
-      return 1;
-    }
-    return 0;
-  });
-  console.log("********************", test);
+  const test = trips
+    .filter((el) => el.statusTrip === "PENDING")
+    .sort((a, b) => {
+      if (a.startDate < b.startDate) {
+        return -1;
+      }
+      if (a.startDate > b.startDate) {
+        return 1;
+      }
+      return 0;
+    });
 
   return (
     <div className={layout}>

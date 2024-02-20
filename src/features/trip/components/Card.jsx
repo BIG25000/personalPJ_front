@@ -1,5 +1,6 @@
 function Card({ trip }) {
   const { title, startDate, endDate, location, image, statusTrip } = trip;
+  // console.log(statusTrip);
 
   return (
     <div className="card card-compact w-[18rem] h-[20rem] bg-greenTwo text-egg shadow-xl">

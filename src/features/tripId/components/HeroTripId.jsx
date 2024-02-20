@@ -2,6 +2,9 @@ import React from "react";
 import useTrip from "../../trip/hooks/use-trip";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import RegisterForm from "../../auth/components/RegisterForm";
+import Modal from "../../../components/Modal";
+import JoinForm from "../../joinTrip/components/JoinForm";
 
 function HeroTripId() {
   const { trips } = useTrip();
@@ -21,12 +24,20 @@ function HeroTripId() {
           <p>{findTripById?.description}</p>
         </div>
         <div className="flex gap-10 items-center">
-          <button className="btn bg-greenOne text-xl text-egg">
-            เข้าร่วมทริป
-          </button>
-          <button className="btn bg-greenOne text-xl text-egg">
-            ดูจำนวนผู้เข้าร่วมทริป
-          </button>
+          <Modal
+            title="เข้าร่วมทริป"
+            id="join"
+            button="btn bg-greenOne text-xl text-egg"
+          >
+            <JoinForm />
+          </Modal>
+          <Modal
+            title="ดูจำนวนผู้เข้าร่วมทริป"
+            id="join"
+            button="btn bg-greenOne text-xl text-egg"
+          >
+            <RegisterForm />
+          </Modal>
           <Link to="/" className="text-md underline">
             BACK HOME
           </Link>
