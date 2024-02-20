@@ -1,7 +1,5 @@
 import React from "react";
-import LoginForm from "../features/auth/components/LoginForm";
-import RegisterForm from "../features/auth/components/RegisterForm";
-import Modal from "../components/Modal";
+
 import Dropdown from "./Dropdown";
 import Search from "./Search";
 import { Link } from "react-router-dom";

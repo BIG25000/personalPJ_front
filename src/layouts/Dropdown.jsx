@@ -21,6 +21,9 @@ function Dropdown() {
           <a>EDIT PROFILE</a>
         </li>
         <li>
+          <a>HISTORY</a>
+        </li>
+        <li>
           <button onClick={logout} role="button">
             LOGOUT
           </button>
