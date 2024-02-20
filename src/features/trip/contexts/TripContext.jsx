@@ -7,6 +7,7 @@ export const TripContext = createContext();
 
 export default function TripContextProvider({ children }) {
   const [trips, setTrips] = useState([]);
+  console.log("trips", trips);
 
   useEffect(() => {
     tripApi

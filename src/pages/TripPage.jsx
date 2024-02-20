@@ -18,7 +18,7 @@ function TripPage() {
           <CreateTripContainer />
         </div>
         <div className="flex justify-center">
-          <CardList />
+          <CardList layout="grid grid-cols-3 gap-10" />
         </div>
       </TripContextProvider>
     </>

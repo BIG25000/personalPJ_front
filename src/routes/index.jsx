@@ -7,6 +7,7 @@ import { Outlet } from "react-router-dom";
 import Header from "../layouts/Header";
 import ProtectedRoute from "../features/auth/components/ProtectedRoute";
 import HeaderGuest from "../layouts/HeaderGuest";
+import TripIDPage from "../pages/TripIDPage";
 
 const router = createBrowserRouter([
   {
@@ -21,22 +22,36 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <>
-        <Header />
-        <Outlet />
+        <ProtectedRoute>
+          <Header />
+          <Outlet />
+        </ProtectedRoute>
       </>
     ),
     children: [
       {
         path: "",
         element: (
-          <ProtectedRoute>
-            <TripPage />
-          </ProtectedRoute>
+          // <ProtectedRoute>
+          <TripPage />
+          // </ProtectedRoute>
         ),
       },
       {
         path: "allTrip",
-        element: <AllTripPage />,
+        element: (
+          // <ProtectedRoute>
+          <AllTripPage />
+          // </ProtectedRoute>
+        ),
+      },
+      {
+        path: "trip/:tripId",
+        element: (
+          // <ProtectedRoute>
+          <TripIDPage />
+          // </ProtectedRoute>
+        ),
       },
     ],
   },
