@@ -30,7 +30,10 @@ function HistoryForm({ data }) {
         <div>
           <button
             className="btn bg-egg"
-            onClick={() => deleteJoinTrip(data.id)}
+            onClick={(e) => {
+              e.stopPropagation();
+              deleteJoinTrip(data.id);
+            }}
           >
             CANCLE
           </button>

@@ -1,12 +1,14 @@
 import React from "react";
 
-function Search() {
+function Search({ onSh, sh }) {
   return (
     <label className="input input-bordered flex items-center gap-2 bg-egg">
       <input
         type="text"
         className="grow  text-greenOne bg-egg"
         placeholder="Search"
+        onChange={onSh}
+        value={sh}
       />
       <svg
         xmlns="http://www.w3.org/2000/svg"

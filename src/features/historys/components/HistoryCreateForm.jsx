@@ -33,7 +33,11 @@ function HistoryCreateForm({ data }) {
       <div>
         <button
           className="btn bg-egg on"
-          onClick={() => deleteCreateTrip(data.id)}
+          onClick={(e) => {
+            e.stopPropagation();
+            deleteCreateTrip(data.id);
+          }}
+          type="button"
         >
           DELETE
         </button>

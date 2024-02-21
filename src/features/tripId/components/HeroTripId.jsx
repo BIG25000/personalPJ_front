@@ -1,4 +1,3 @@
-import React from "react";
 import useTrip from "../../trip/hooks/use-trip";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -8,18 +7,25 @@ import JoinForm from "../../joinTrip/components/JoinForm";
 import allUserById from "../../../hooks/allUse-auth";
 import useAuth from "../../../hooks/use-auth";
 import { useState } from "react";
+import { useEffect } from "react";
 
 function HeroTripId() {
   const { trips } = useTrip();
   // const { allCreate } = allUserById();
-  // const { authUser } = useAuth();
+  const { authUser } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
 
   const findTripById = trips.find((el) => el.id == useParams().tripId);
 
-  // if (findTripById?.userId == authUser?.id) {
-  //   console.log("5555");
-  // }
+  console.log(findTripById?.userId);
+  console.log(authUser?.id);
+
+  useEffect(() => {
+    if (findTripById?.userId == authUser?.id) {
+      console.log("****");
+      setIsOpen(true);
+    }
+  }, []);
 
   return (
     <>
@@ -49,6 +55,7 @@ function HeroTripId() {
           >
             <RegisterForm />
           </Modal>
+
           <Link to="/" className="text-md underline">
             BACK HOME
           </Link>
@@ -62,3 +69,34 @@ function HeroTripId() {
 }
 
 export default HeroTripId;
+
+// {!isOpen && (
+//   <>
+//     <Modal
+//       title="เข้าร่วมทริป"
+//       id="join"
+//       button="btn bg-greenOne text-xl text-egg"
+//     >
+//       <JoinForm />
+//     </Modal>
+//   </>
+// )}
+
+// {isOpen && (
+//   <>
+//     <Modal
+//       title="เข้าร่วมทริป"
+//       id="join"
+//       button="btn bg-greenOne text-xl text-egg"
+//     >
+//       <JoinForm />
+//     </Modal>
+//     <Modal
+//       title="ดูจำนวนผู้เข้าร่วมทริป"
+//       id="join"
+//       button="btn bg-greenOne text-xl text-egg"
+//     >
+//       <RegisterForm />
+//     </Modal>
+//   </>
+// )}

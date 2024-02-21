@@ -6,6 +6,7 @@ import TripContextProvider, {
   TripContext,
 } from "../features/trip/contexts/TripContext";
 import CardList from "../features/trip/components/CardList";
+import AuthContextProvider from "../features/auth/contexts/AuthContext";
 
 function TripPage() {
   return (

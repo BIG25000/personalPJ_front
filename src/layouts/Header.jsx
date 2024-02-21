@@ -5,13 +5,20 @@ import Search from "./Search";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "../config/axios";
+import { useState } from "react";
+import useAuth from "../hooks/use-auth";
+import { useLocation } from "react-router-dom";
 
 function Header() {
+  const { pathname } = useLocation();
+
   const updateStatus = async () => {
     await axios.patch("/updateStatus");
   };
 
   useEffect(() => updateStatus(), []);
+
+  const { sh, handleSh } = useAuth();
 
   return (
     <div className="navbar bg-greenOne text-egg">
@@ -19,7 +26,8 @@ function Header() {
         <Link to="/" className="btn btn-ghost text-xl text-egg">
           เดินปะ
         </Link>
-        <Search />
+
+        {pathname == "/allTrip" ? <Search onSh={handleSh} sh={sh} /> : null}
       </div>
       <div className="justify-self-end">
         <Dropdown />

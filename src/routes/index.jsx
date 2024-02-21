@@ -9,7 +9,6 @@ import ProtectedRoute from "../features/auth/components/ProtectedRoute";
 import HeaderGuest from "../layouts/HeaderGuest";
 import TripIDPage from "../pages/TripIDPage";
 import HistoryPage from "../pages/HistoryPage";
-import HistoryContextProvider from "../features/historys/components/contexts/HistoryContext";
 
 const router = createBrowserRouter([
   {

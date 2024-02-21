@@ -11,7 +11,7 @@ function JoinForm() {
   const { authUser } = useAuth();
   const { trips, createJoinTrip } = useTrip();
   const findTripById = trips.find((el) => el.id == useParams().tripId);
-  console.log(findTripById);
+  // console.log(findTripById);
 
   const handleFormSubmit = async (e) => {
     try {
