@@ -9,6 +9,7 @@ export const HistoryContext = createContext();
 
 function HistoryContextProvider({ children }) {
   const [allUser, setALlUser] = useState([]);
+  const [allCreate, setAllCreate] = useState([]);
 
   useEffect(() => {
     if (getToken()) {
@@ -22,8 +23,20 @@ function HistoryContextProvider({ children }) {
     }
   }, []);
 
+  useEffect(() => {
+    if (getToken()) {
+      authApi
+        .fetchAllCreate()
+        .then((res) => {
+          setAllCreate(res.data.data);
+        })
+        .catch((err) => {});
+    } else {
+    }
+  }, []);
+
   return (
-    <HistoryContext.Provider value={{ allUser }}>
+    <HistoryContext.Provider value={{ allUser, allCreate }}>
       {children}
     </HistoryContext.Provider>
   );

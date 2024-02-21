@@ -1,7 +1,6 @@
 import React from "react";
-import allUserById from "../../../hooks/allUse-auth";
 
-function HistoryForm({ data }) {
+function HistoryCreateForm({ data }) {
   return (
     <div className="border p-10 flex justify-around gap-5 items-center text-egg bg-greenTwo rounded-2xl">
       <div className="text-center">
@@ -18,11 +17,15 @@ function HistoryForm({ data }) {
       </div>
       <div className="text-center">
         <div className="text-center">จำนวนคนที่จอง</div>
-        <div>{data.people_join}</div>
+        <div>{data.num_people}</div>
       </div>
       <div className="text-center">
         <div className="text-center">status</div>
-        <div class="badge badge-outline text-md">{data.statusJoin}</div>
+        <div class="badge badge-outline text-md">{data.statusTrip}</div>
+      </div>
+      <div className="text-center">
+        <div className="text-center">status</div>
+        <div class="badge badge-outline text-md">{data.statusTrip}</div>
       </div>
       <div>
         <button className="btn bg-egg">CANCLE</button>
@@ -31,4 +34,4 @@ function HistoryForm({ data }) {
   );
 }
 
-export default HistoryForm;
+export default HistoryCreateForm;
