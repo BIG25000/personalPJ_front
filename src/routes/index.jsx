@@ -8,6 +8,8 @@ import Header from "../layouts/Header";
 import ProtectedRoute from "../features/auth/components/ProtectedRoute";
 import HeaderGuest from "../layouts/HeaderGuest";
 import TripIDPage from "../pages/TripIDPage";
+import HistoryPage from "../pages/HistoryPage";
+import HistoryContextProvider from "../features/historys/components/contexts/HistoryContext";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +52,14 @@ const router = createBrowserRouter([
         element: (
           // <ProtectedRoute>
           <TripIDPage />
+          // </ProtectedRoute>
+        ),
+      },
+      {
+        path: "history",
+        element: (
+          // <ProtectedRoute>
+          <HistoryPage />
           // </ProtectedRoute>
         ),
       },

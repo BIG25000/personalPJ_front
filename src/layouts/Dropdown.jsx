@@ -21,7 +21,7 @@ function Dropdown() {
           <a>EDIT PROFILE</a>
         </li>
         <li>
-          <a>HISTORY</a>
+          <Link to="/history">HISTORY</Link>
         </li>
         <li>
           <button onClick={logout} role="button">

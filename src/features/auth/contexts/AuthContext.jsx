@@ -21,8 +21,6 @@ function AuthContextProvider({ children }) {
     } else {
     }
   }, []);
-  if (authUser) {
-  }
 
   const register = async (user) => {
     const res = await authApi.register(user);

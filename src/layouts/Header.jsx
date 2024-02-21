@@ -10,7 +10,9 @@ function Header() {
   const updateStatus = async () => {
     await axios.patch("/updateStatus");
   };
+
   useEffect(() => updateStatus(), []);
+
   return (
     <div className="navbar bg-greenOne text-egg">
       <div className="flex-1">
