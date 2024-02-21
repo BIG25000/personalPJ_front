@@ -5,11 +5,22 @@ import { Link } from "react-router-dom";
 import RegisterForm from "../../auth/components/RegisterForm";
 import Modal from "../../../components/Modal";
 import JoinForm from "../../joinTrip/components/JoinForm";
+import allUserById from "../../../hooks/allUse-auth";
+import useAuth from "../../../hooks/use-auth";
+import { useState } from "react";
 
 function HeroTripId() {
   const { trips } = useTrip();
+  // const { allCreate } = allUserById();
+  // const { authUser } = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
 
   const findTripById = trips.find((el) => el.id == useParams().tripId);
+
+  // if (findTripById?.userId == authUser?.id) {
+  //   console.log("5555");
+  // }
+
   return (
     <>
       <div className="px-32 pt-12 flex flex-col gap-10 pb-10">

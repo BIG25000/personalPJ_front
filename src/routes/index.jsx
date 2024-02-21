@@ -24,10 +24,12 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <>
+        {/* <HistoryContextProvider> */}
         <ProtectedRoute>
           <Header />
           <Outlet />
         </ProtectedRoute>
+        {/* </HistoryContextProvider> */}
       </>
     ),
     children: [

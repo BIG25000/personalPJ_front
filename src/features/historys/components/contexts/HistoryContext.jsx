@@ -4,6 +4,7 @@ import { createContext } from "react";
 import * as authApi from "../../../../api/auth";
 import { getToken } from "../../../../utils/local-storage";
 import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 export const HistoryContext = createContext();
 
@@ -37,10 +38,12 @@ function HistoryContextProvider({ children }) {
 
   const deleteCreateTrip = async (id) => {
     await authApi.deleteCreateTrip(id);
+    toast.success("delete trip success");
   };
 
   const deleteJoinTrip = async (id) => {
     await authApi.deleteJoinTrip(id);
+    toast.success("cancle trip success");
   };
 
   return (
