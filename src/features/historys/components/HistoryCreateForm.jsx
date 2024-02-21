@@ -1,6 +1,9 @@
 import React from "react";
+import allUserCreate from "../../../hooks/allUse-auth";
 
 function HistoryCreateForm({ data }) {
+  const { deleteCreateTrip } = allUserCreate();
+
   return (
     <div className="border p-10 flex justify-around gap-5 items-center text-egg bg-greenTwo rounded-2xl">
       <div className="text-center">
@@ -20,15 +23,20 @@ function HistoryCreateForm({ data }) {
         <div>{data.num_people}</div>
       </div>
       <div className="text-center">
-        <div className="text-center">status</div>
-        <div class="badge badge-outline text-md">{data.statusTrip}</div>
+        <div className="text-center">location</div>
+        <div class="badge badge-outline text-md">{data.location}</div>
       </div>
       <div className="text-center">
         <div className="text-center">status</div>
         <div class="badge badge-outline text-md">{data.statusTrip}</div>
       </div>
       <div>
-        <button className="btn bg-egg">CANCLE</button>
+        <button
+          className="btn bg-egg on"
+          onClick={() => deleteCreateTrip(data.id)}
+        >
+          DELETE
+        </button>
       </div>
     </div>
   );

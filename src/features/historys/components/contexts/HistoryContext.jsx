@@ -35,8 +35,18 @@ function HistoryContextProvider({ children }) {
     }
   }, []);
 
+  const deleteCreateTrip = async (id) => {
+    await authApi.deleteCreateTrip(id);
+  };
+
+  const deleteJoinTrip = async (id) => {
+    await authApi.deleteJoinTrip(id);
+  };
+
   return (
-    <HistoryContext.Provider value={{ allUser, allCreate }}>
+    <HistoryContext.Provider
+      value={{ allUser, allCreate, deleteCreateTrip, deleteJoinTrip }}
+    >
       {children}
     </HistoryContext.Provider>
   );

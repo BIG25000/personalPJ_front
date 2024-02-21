@@ -7,3 +7,6 @@ export const fetchAllCreate = () => axios.get("/trips/historyCreate");
 
 export const login = (credential) => axios.post("/auth/login", credential);
 export const guestIn = () => axios.post("/guest");
+export const deleteCreateTrip = (id) =>
+  axios.delete(`/trips/historyCreate/${id}`);
+export const deleteJoinTrip = (id) => axios.delete(`/trips/historyJoin/${id}`);

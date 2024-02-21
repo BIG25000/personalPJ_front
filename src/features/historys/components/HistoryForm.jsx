@@ -1,7 +1,9 @@
 import React from "react";
 import allUserById from "../../../hooks/allUse-auth";
+import allUserCreate from "../../../hooks/allUse-auth";
 
 function HistoryForm({ data }) {
+  const { deleteJoinTrip } = allUserCreate();
   return (
     <div className="border p-10 flex justify-around gap-5 items-center text-egg bg-greenTwo rounded-2xl">
       <div className="text-center">
@@ -25,7 +27,9 @@ function HistoryForm({ data }) {
         <div class="badge badge-outline text-md">{data.statusJoin}</div>
       </div>
       <div>
-        <button className="btn bg-egg">CANCLE</button>
+        <button className="btn bg-egg" onClick={() => deleteJoinTrip(data.id)}>
+          CANCLE
+        </button>
       </div>
     </div>
   );
