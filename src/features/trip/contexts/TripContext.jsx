@@ -9,6 +9,7 @@ export const TripContext = createContext();
 export default function TripContextProvider({ children }) {
   const [trips, setTrips] = useState([]);
   const [trips2, setTrips2] = useState([]);
+  const [tripById, setTripById] = useState({});
 
   const { pathname } = useLocation();
   console.log(pathname);
@@ -41,7 +42,15 @@ export default function TripContextProvider({ children }) {
 
   return (
     <TripContext.Provider
-      value={{ createTrip, trips, createJoinTrip, editTrip, trips2 }}
+      value={{
+        createTrip,
+        trips,
+        createJoinTrip,
+        editTrip,
+        trips2,
+        tripById,
+        setTripById,
+      }}
     >
       {children}
     </TripContext.Provider>

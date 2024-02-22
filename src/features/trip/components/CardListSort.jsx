@@ -8,6 +8,7 @@ import useAuth from "../../../hooks/use-auth";
 function CardListSort({ layout }) {
   const { trips } = useTrip();
   const { sh, handleSh } = useAuth();
+  console.log(trips);
 
   const shFilter = trips
     .filter((el) => el.title.includes(sh))

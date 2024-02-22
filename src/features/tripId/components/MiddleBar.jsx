@@ -1,20 +1,42 @@
 import React from "react";
-
+import * as tripApi from "../../../api/trip";
 import useTrip from "../../trip/hooks/use-trip";
 import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
+import useAuth from "../../../hooks/use-auth";
 
 function MiddleBar() {
-  const { trips } = useTrip();
+  const { tripById, setTripById } = useTrip();
+  const { authUser } = useAuth();
+  // const { trips } = useTrip();
+  const { tripId } = useParams();
 
-  const findTripById = trips.find((el) => el.id == useParams().tripId);
-  const startDateCon = new Date(findTripById?.startDate).toLocaleDateString(
+  // const findTripById = trips.find((el) => el.id == useParams().tripId);
+  const startDateCon = new Date(tripById?.startDate).toLocaleDateString(
     "th-TH",
     { day: "numeric", month: "long", year: "numeric" }
   );
-  const endDateCon = new Date(findTripById?.endDate).toLocaleDateString(
-    "th-TH",
-    { day: "numeric", month: "long", year: "numeric" }
-  );
+  const endDateCon = new Date(tripById?.endDate).toLocaleDateString("th-TH", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
+  useEffect(() => {
+    tripApi
+      .getTripById(tripId)
+      .then((res) => {
+        setTripById(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+
+    if (tripById?.userId == authUser?.id) {
+      console.log("****");
+      setIsOpen(true);
+    }
+  }, [tripId]);
 
   const icon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" cl>
@@ -22,14 +44,16 @@ function MiddleBar() {
     </svg>
   );
 
+  console.log(tripById);
+
   return (
     <>
       <div className="bg-greenTwo flex flex-col px-32 text-egg gap-4 justify-center h-[10rem]">
         <div className="flex gap-10 items-center">
-          <h1 className="text-3xl">{findTripById?.title}</h1>
+          <h1 className="text-3xl">{tripById?.title}</h1>
           <h1 className="flex items-center gap-2">
             <div className="h-[15px] w-[15px]">{icon()}</div>
-            <div>{findTripById?.location}</div>
+            <div>{tripById?.location}</div>
           </h1>
         </div>
         <div className="flex justify-around">
@@ -44,7 +68,7 @@ function MiddleBar() {
           </div>
           <div>
             <div>รับผู้เข้าร่วม</div>
-            <div className="text-center">{findTripById?.numPeople} คน</div>
+            <div className="text-center">{tripById?.numPeople} คน</div>
           </div>
         </div>
       </div>

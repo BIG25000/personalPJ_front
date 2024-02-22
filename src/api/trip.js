@@ -11,3 +11,5 @@ export const createJoinTrip = (userJoin) =>
   axios.post("/trips/joins", userJoin);
 
 export const editTrip = (data, id) => axios.patch(`/trips/${id}`, data);
+
+export const getTripById = (id) => axios.get(`/trips/${id}`);

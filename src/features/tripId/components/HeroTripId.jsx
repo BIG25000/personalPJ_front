@@ -11,41 +11,51 @@ import { useEffect } from "react";
 import TripForm from "../../trip/components/TripForm";
 import EditForm from "../../trip/components/EditForm";
 import PeopleJoinForm from "../../joinTrip/components/PeopleJoinForm";
+import { useLocation } from "react-router-dom";
+import * as tripApi from "../../../api/trip";
 
 function HeroTripId() {
-  const { trips, createTrip, editTrip } = useTrip();
+  const { editTrip, tripById, setTripById } = useTrip();
   // const { allCreate } = allUserById();
   const { authUser } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+
+  const { tripId } = useParams();
 
   const submitEditForm = async (formData, tripId) => {
     await editTrip(formData, tripId);
   };
 
-  const findTripById = trips.find((el) => el.id == useParams().tripId);
+  // const findTripById = trips.find((el) => el.id == seParams().tripId);
 
-  console.log(findTripById?.userId);
-  console.log(authUser?.id);
+  // console.log(findTripById?.userId);
+  // console.log(authUser?.id);
 
   useEffect(() => {
-    if (findTripById?.userId == authUser?.id) {
+    tripApi
+      .getTripById(tripId)
+      .then((res) => {
+        setTripById(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+
+    if (tripById?.userId == authUser?.id) {
       console.log("****");
       setIsOpen(true);
     }
-  }, [findTripById]);
+  }, [tripId]);
+
+  console.log(tripById, "-----------------------------------------------");
 
   return (
     <>
       <div className="px-32 pt-12 flex flex-col gap-10 pb-10">
         <div>
-          <img
-            src={findTripById?.image}
-            alt=""
-            className="h-[30rem] w-[50rem]"
-          />
+          <img src={tripById?.image} alt="" className="h-[30rem] w-[50rem]" />
         </div>
         <div>
-          <p>{findTripById?.description}</p>
+          <p>{tripById?.description}</p>
         </div>
         <div className="flex gap-10 items-center">
           {!isOpen && (

@@ -1,6 +1,8 @@
 function Card({ trip }) {
   const { title, startDate, endDate, location, image, statusTrip } = trip;
 
+  console.log(trip);
+
   return (
     <div className="card card-compact w-[18rem] h-[20rem] bg-greenTwo text-egg shadow-xl">
       <figure>
@@ -12,8 +14,9 @@ function Card({ trip }) {
         <p>startDate : {startDate.slice(0, 10)}</p>
         <p>endDate : {endDate.slice(0, 10)}</p>
         <div className="card-actions justify-between items-center">
-          <div className="badge badge-outline">{statusTrip}</div>
-          <button className="btn bg-egg text-greenTwo">view detail trip</button>
+          <div className="badge badge-outline flex justify-center">
+            {statusTrip}
+          </div>
         </div>
       </div>
     </div>
