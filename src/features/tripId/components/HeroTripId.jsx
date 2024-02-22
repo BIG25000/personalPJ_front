@@ -8,12 +8,23 @@ import allUserById from "../../../hooks/allUse-auth";
 import useAuth from "../../../hooks/use-auth";
 import { useState } from "react";
 import { useEffect } from "react";
+import TripForm from "../../trip/components/TripForm";
+import EditForm from "../../trip/components/EditForm";
 
 function HeroTripId() {
-  const { trips } = useTrip();
+  const { trips, createTrip, editTrip } = useTrip();
   // const { allCreate } = allUserById();
   const { authUser } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+
+  const submitTripForm = async (formData) => {
+    await createTrip(formData);
+    console.log(formData);
+  };
+
+  const submitEditForm = async (formData, tripId) => {
+    await editTrip(formData, tripId);
+  };
 
   const findTripById = trips.find((el) => el.id == useParams().tripId);
 
@@ -25,7 +36,7 @@ function HeroTripId() {
       console.log("****");
       setIsOpen(true);
     }
-  }, []);
+  }, [findTripById]);
 
   return (
     <>
@@ -41,20 +52,36 @@ function HeroTripId() {
           <p>{findTripById?.description}</p>
         </div>
         <div className="flex gap-10 items-center">
-          <Modal
-            title="เข้าร่วมทริป"
-            id="join"
-            button="btn bg-greenOne text-xl text-egg"
-          >
-            <JoinForm />
-          </Modal>
-          <Modal
-            title="ดูจำนวนผู้เข้าร่วมทริป"
-            id="join"
-            button="btn bg-greenOne text-xl text-egg"
-          >
-            <RegisterForm />
-          </Modal>
+          {!isOpen && (
+            <>
+              <Modal
+                title="เข้าร่วมทริป"
+                id="join"
+                button="btn bg-greenOne text-xl text-egg"
+              >
+                <JoinForm />
+              </Modal>
+            </>
+          )}
+
+          {isOpen && (
+            <>
+              <Modal
+                title="Edit Trip"
+                id="editTrip"
+                button="btn bg-greenOne text-egg"
+              >
+                <EditForm onSubmit={submitEditForm} />
+              </Modal>
+              <Modal
+                title="ดูจำนวนผู้เข้าร่วมทริป"
+                id="join"
+                button="btn bg-greenOne text-xl text-egg"
+              >
+                <RegisterForm />
+              </Modal>
+            </>
+          )}
 
           <Link to="/" className="text-md underline">
             BACK HOME
@@ -100,3 +127,20 @@ export default HeroTripId;
 //     </Modal>
 //   </>
 // )}
+
+//******************************************************************************** */
+
+// <Modal
+//           title="เข้าร่วมทริป"
+//           id="join"
+//           button="btn bg-greenOne text-xl text-egg"
+//         >
+//           <JoinForm />
+//         </Modal>
+//         <Modal
+//           title="ดูจำนวนผู้เข้าร่วมทริป"
+//           id="join"
+//           button="btn bg-greenOne text-xl text-egg"
+//         >
+//           <RegisterForm />
+//         </Modal>

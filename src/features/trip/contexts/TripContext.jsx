@@ -23,8 +23,14 @@ export default function TripContextProvider({ children }) {
     await tripApi.createJoinTrip(userJoin);
   };
 
+  const editTrip = async (data, id) => {
+    await tripApi.editTrip(data, id);
+  };
+
   return (
-    <TripContext.Provider value={{ createTrip, trips, createJoinTrip }}>
+    <TripContext.Provider
+      value={{ createTrip, trips, createJoinTrip, editTrip }}
+    >
       {children}
     </TripContext.Provider>
   );

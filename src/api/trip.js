@@ -7,3 +7,5 @@ export const getAllTrip = () => axios.get("/trips/allTrip");
 
 export const createJoinTrip = (userJoin) =>
   axios.post("/trips/joins", userJoin);
+
+export const editTrip = (data, id) => axios.patch(`/trips/${id}`, data);
