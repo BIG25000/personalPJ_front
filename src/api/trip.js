@@ -5,6 +5,8 @@ export const createTrip = (formData) => axios.post("/trips", formData);
 
 export const getAllTrip = () => axios.get("/trips/allTrip");
 
+export const getAllTrip2 = () => axios.get("/trips/allTrip2");
+
 export const createJoinTrip = (userJoin) =>
   axios.post("/trips/joins", userJoin);
 

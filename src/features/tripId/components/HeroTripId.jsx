@@ -10,17 +10,13 @@ import { useState } from "react";
 import { useEffect } from "react";
 import TripForm from "../../trip/components/TripForm";
 import EditForm from "../../trip/components/EditForm";
+import PeopleJoinForm from "../../joinTrip/components/PeopleJoinForm";
 
 function HeroTripId() {
   const { trips, createTrip, editTrip } = useTrip();
   // const { allCreate } = allUserById();
   const { authUser } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
-
-  const submitTripForm = async (formData) => {
-    await createTrip(formData);
-    console.log(formData);
-  };
 
   const submitEditForm = async (formData, tripId) => {
     await editTrip(formData, tripId);
@@ -69,7 +65,7 @@ function HeroTripId() {
               <Modal
                 title="Edit Trip"
                 id="editTrip"
-                button="btn bg-greenOne text-egg"
+                button="btn bg-greenOne text-egg text-xl "
               >
                 <EditForm onSubmit={submitEditForm} />
               </Modal>
@@ -78,7 +74,7 @@ function HeroTripId() {
                 id="join"
                 button="btn bg-greenOne text-xl text-egg"
               >
-                <RegisterForm />
+                <PeopleJoinForm />
               </Modal>
             </>
           )}

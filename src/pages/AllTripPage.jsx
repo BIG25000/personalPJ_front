@@ -9,9 +9,14 @@ function AllTripPage() {
     <>
       <div className="mt-10 mb-10 mx-10 flex justify-between items-center">
         <p className="text-xl font-medium">!!! UPCOMING !!!</p>
-        <Link to="/" className="text-md underline">
-          BACK HOME
-        </Link>
+        <div className="flex gap-5">
+          <Link to="/success" className="text-md underline">
+            SUCCESS PAGE
+          </Link>
+          <Link to="/" className="text-md underline">
+            BACK HOME
+          </Link>
+        </div>
       </div>
       <TripContextProvider>
         <div className="flex justify-center">

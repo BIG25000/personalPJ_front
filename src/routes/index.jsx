@@ -9,6 +9,7 @@ import ProtectedRoute from "../features/auth/components/ProtectedRoute";
 import HeaderGuest from "../layouts/HeaderGuest";
 import TripIDPage from "../pages/TripIDPage";
 import HistoryPage from "../pages/HistoryPage";
+import SuccessPage from "../pages/SuccessPage";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,14 @@ const router = createBrowserRouter([
         element: (
           // <ProtectedRoute>
           <HistoryPage />
+          // </ProtectedRoute>
+        ),
+      },
+      {
+        path: "success",
+        element: (
+          // <ProtectedRoute>
+          <SuccessPage />
           // </ProtectedRoute>
         ),
       },
