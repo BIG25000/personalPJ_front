@@ -22,25 +22,47 @@ function EditForm({ onSubmit }) {
       // input.startDate = `${newStartDate}`;
       // input.endDate = new Date(input.endDate);
       const formData = new FormData();
-      if (
-        input.title ||
-        input.location ||
-        input.startDate ||
-        input.endDate ||
-        input.description ||
-        input.meetingPlace ||
-        input.numPeople
-      ) {
+      // if (
+      //   input.title ||
+      //   input.location ||
+      //   input.startDate ||
+      //   input.endDate ||
+      //   input.description ||
+      //   input.meetingPlace ||
+      //   input.numPeople
+      // ) {
+      //   formData.append("title", input.title);
+      //   formData.append("location", input.location);
+      //   formData.append("startDate", input.startDate);
+      //   formData.append("endDate", input.endDate);
+      //   formData.append("description", input.description);
+      //   formData.append("meetingPlace", input.meetingPlace);
+      //   formData.append("numPeople", input.numPeople);
+      // }
+      if (input.title) {
         formData.append("title", input.title);
-        formData.append("location", input.location);
-        formData.append("startDate", input.startDate);
-        formData.append("endDate", input.endDate);
-        formData.append("description", input.description);
-        formData.append("meetingPlace", input.meetingPlace);
-        formData.append("numPeople", input.numPeople);
-      } else {
-        return toast.error("กรุณากรอกสักอย่าง");
       }
+      if (input.location) {
+        formData.append("location", input.location);
+      }
+      if (input.startDate) {
+        formData.append("startDate", input.startDate);
+      }
+      if (input.endDate) {
+        formData.append("endDate", input.endDate);
+      }
+      if (input.description) {
+        formData.append("description", input.description);
+      }
+      if (input.meetingPlace) {
+        formData.append("meetingPlace", input.meetingPlace);
+      }
+      if (input.numPeople) {
+        formData.append("numPeople", input.numPeople);
+      }
+      //  else {
+      //   return toast.error("กรุณากรอกสักอย่าง");
+      // }
 
       if (image) {
         formData.append("image", image);
