@@ -8,7 +8,7 @@ function LoginPage() {
     <div
       className="h-[100vh]"
       style={{
-        backgroundImage: `url(https://c4.wallpaperflare.com/wallpaper/890/877/129/landscape-lake-mountains-waterfall-wallpaper-preview.jpg)`,
+        backgroundImage: `url(https://r4.wallpaperflare.com/wallpaper/958/157/272/sun-rays-landscape-steps-torii-wallpaper-6920283d411a7dfb2667f8dfc061460d.jpg)`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         width: "100%",

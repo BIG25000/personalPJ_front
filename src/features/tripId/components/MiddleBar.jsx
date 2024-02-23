@@ -12,6 +12,8 @@ function MiddleBar() {
   // const { trips } = useTrip();
   const { tripId } = useParams();
 
+  console.log(authUser);
+
   // const findTripById = trips.find((el) => el.id == useParams().tripId);
   const startDateCon = new Date(tripById?.startDate).toLocaleDateString(
     "th-TH",
@@ -48,27 +50,39 @@ function MiddleBar() {
 
   return (
     <>
-      <div className="bg-greenTwo flex flex-col px-32 text-egg gap-4 justify-center h-[10rem]">
-        <div className="flex gap-10 items-center">
-          <h1 className="text-3xl">{tripById?.title}</h1>
-          <h1 className="flex items-center gap-2">
-            <div className="h-[15px] w-[15px]">{icon()}</div>
-            <div>{tripById?.location}</div>
-          </h1>
-        </div>
-        <div className="flex justify-around">
-          <div className="flex items-center">Profile</div>
-          <div>
-            <div className="text-center">วันที่เริ่มทริป</div>
-            <div>{startDateCon}</div>
+      <div
+        className="min-h-[10rem]"
+        style={{
+          backgroundImage: `url(https://r4.wallpaperflare.com/wallpaper/958/157/272/sun-rays-landscape-steps-torii-wallpaper-6920283d411a7dfb2667f8dfc061460d.jpg)`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          width: "100%",
+        }}
+      >
+        <div className="bg-greenTwo flex flex-col px-32 text-egg gap-4 justify-center h-[10rem] bg-opacity-70">
+          <div className="flex gap-10 items-center">
+            <h1 className="text-3xl">{tripById?.title}</h1>
+            <h1 className="flex items-center gap-2">
+              <div className="h-[15px] w-[15px]">{icon()}</div>
+              <div className="text-xl">{tripById?.location}</div>
+            </h1>
           </div>
-          <div>
-            <div className="text-center">วันที่เริ่มทริป</div>
-            <div>{endDateCon}</div>
-          </div>
-          <div>
-            <div>รับผู้เข้าร่วม</div>
-            <div className="text-center">{tripById?.numPeople} คน</div>
+          <div className="flex justify-around">
+            <div className="flex items-center font-medium text-2xl">
+              create by : {authUser.firstName} {authUser.lastName}
+            </div>
+            <div>
+              <div className="text-center">วันที่เริ่มทริป</div>
+              <div>{startDateCon}</div>
+            </div>
+            <div>
+              <div className="text-center">วันที่เริ่มทริป</div>
+              <div>{endDateCon}</div>
+            </div>
+            <div>
+              <div>รับผู้เข้าร่วม</div>
+              <div className="text-center">{tripById?.numPeople} คน</div>
+            </div>
           </div>
         </div>
       </div>

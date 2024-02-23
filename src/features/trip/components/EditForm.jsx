@@ -11,9 +11,13 @@ function EditForm({ onSubmit }) {
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const fileInputEl = useRef(null);
-  const { editTrip } = useTrip();
-
+  const { editTrip, trips } = useTrip();
   const { tripId } = useParams();
+
+  // console.log(, "*************************************");
+
+  const filterTrip = trips.filter((e) => e.id == tripId)[0];
+  // console.log(filterTrip.title, "***************************");
 
   const handleSubmitForm = async (e) => {
     try {
@@ -99,7 +103,7 @@ function EditForm({ onSubmit }) {
               </div>
               <input
                 type="text"
-                placeholder="ลำคลองงู"
+                placeholder={filterTrip?.title}
                 className="input input-bordered w-full"
                 name="title"
                 value={input.title}
@@ -114,7 +118,7 @@ function EditForm({ onSubmit }) {
               </div>
               <input
                 type="text"
-                placeholder="ตาก"
+                placeholder={filterTrip?.location}
                 className="input input-bordered w-full"
                 name="location"
                 value={input.location}
@@ -129,7 +133,6 @@ function EditForm({ onSubmit }) {
               </div>
               <input
                 type="date"
-                placeholder="ตาก"
                 className="input input-bordered w-full"
                 name="startDate"
                 value={input.startDate}
@@ -144,7 +147,6 @@ function EditForm({ onSubmit }) {
               </div>
               <input
                 type="date"
-                placeholder="ตาก"
                 className="input input-bordered w-full"
                 name="endDate"
                 value={input.endDate}
@@ -159,7 +161,7 @@ function EditForm({ onSubmit }) {
             <textarea
               className="block w-full outline-none resize-none"
               rows="10"
-              placeholder="เดินป่าที่ตาก"
+              placeholder={filterTrip?.description}
               name="description"
               value={input.description}
               onChange={handleChangeInput}
@@ -172,7 +174,7 @@ function EditForm({ onSubmit }) {
               </div>
               <input
                 type="text"
-                placeholder="หมอชิต"
+                placeholder={filterTrip?.meetingPlace}
                 className="input input-bordered w-full"
                 name="meetingPlace"
                 value={input.meetingPlace}
@@ -187,7 +189,7 @@ function EditForm({ onSubmit }) {
               </div>
               <input
                 type="text"
-                placeholder="10"
+                placeholder={filterTrip?.numPeople}
                 className="input input-bordered w-full"
                 name="numPeople"
                 value={input.numPeople}

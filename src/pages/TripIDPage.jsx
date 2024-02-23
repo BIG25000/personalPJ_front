@@ -8,6 +8,7 @@ function TripIDPage() {
     <div>
       <TripContextProvider>
         <MiddleBar />
+
         <HeroTripId />
       </TripContextProvider>
     </div>

@@ -15,7 +15,12 @@ function PeopleJoinContainer() {
 
   const a = showJoin.map((el) => <PeopleJoinForm item={el} />);
 
-  return <div>{a}</div>;
+  return (
+    <>
+      <div className="text-center font-semibold text-xl">USER JOIN TRIP</div>
+      <div>{a}</div>
+    </>
+  );
 }
 
 export default PeopleJoinContainer;

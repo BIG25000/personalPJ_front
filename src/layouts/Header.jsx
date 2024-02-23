@@ -29,9 +29,16 @@ function Header() {
 
         {pathname == "/allTrip" ? (
           <>
-            <Search onSh={handleSh} sh={sh} type="text" />
-            <Search onSh={handleShD} sh={shD} type="date" />
-            <button onClick={() => setShd("")}>RESETDATE</button>
+            <div className="flex gap-5">
+              <Search onSh={handleSh} sh={sh} type="text" />
+              <Search onSh={handleShD} sh={shD} type="date" />
+              <button
+                className="btn bg-egg text-greenTwo"
+                onClick={() => setShd("")}
+              >
+                RESETDATE
+              </button>
+            </div>
           </>
         ) : null}
       </div>
