@@ -3,6 +3,7 @@ import * as tripApi from "../../../api/trip";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const TripContext = createContext();
 
@@ -48,6 +49,15 @@ export default function TripContextProvider({ children }) {
     setShowJoin(result.data.data);
   };
 
+  const acceptJoin = async (id) => {
+    await tripApi.acceptJoin(id);
+    toast.success("accept join trip success");
+  };
+  const rejectJoin = async (id) => {
+    await tripApi.rejectJoin(id);
+    toast.success("reject join trip success");
+  };
+
   console.log(showJoin);
 
   return (
@@ -62,6 +72,8 @@ export default function TripContextProvider({ children }) {
         setTripById,
         getJoinAll,
         showJoin,
+        acceptJoin,
+        rejectJoin,
       }}
     >
       {children}

@@ -1,11 +1,13 @@
 import React from "react";
+import useTrip from "../../trip/hooks/use-trip";
 
 function PeopleJoinForm({ item }) {
+  const { acceptJoin, rejectJoin } = useTrip();
   return (
     <div className="border p-5 flex flex-col gap-5 items-center text-egg bg-greenTwo rounded-2xl">
       <div className="text-center">
-        <div>หัวข้อ</div>
-        <div>{item.title}</div>
+        <div>ชื่อผู้เข้า</div>
+        <div>{item.name_join}</div>
       </div>
       <div className="text-center">
         <div>จำนวนผู้เข้าร่วม</div>
@@ -23,7 +25,24 @@ function PeopleJoinForm({ item }) {
         <div className="text-center">status</div>
         <div class="badge badge-outline text-md">{item.statusJoin}</div>
       </div>
-      <div></div>
+      <div className="flex gap-8">
+        <button
+          className="btn bg-egg text-greenTwo"
+          onClick={(e) => {
+            acceptJoin(item.joinId);
+          }}
+        >
+          ACCETP
+        </button>
+        <button
+          className="btn bg-egg text-greenTwo"
+          onClick={(e) => {
+            rejectJoin(item.joinId);
+          }}
+        >
+          REJECT
+        </button>
+      </div>
     </div>
   );
 }

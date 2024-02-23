@@ -7,11 +7,13 @@ import useAuth from "../../../hooks/use-auth";
 
 function CardListSort({ layout }) {
   const { trips } = useTrip();
-  const { sh, handleSh } = useAuth();
+  const { sh, handleSh, shD } = useAuth();
+
   console.log(trips);
 
   const shFilter = trips
     .filter((el) => el.title.includes(sh))
+    .filter((el) => el.startDate.includes(shD))
     .map((trip) => (
       <Link to={`/trip/${trip.id}`}>
         <Card trip={trip} />

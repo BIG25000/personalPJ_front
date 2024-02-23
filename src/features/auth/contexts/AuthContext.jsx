@@ -10,9 +10,14 @@ export const AuthContext = createContext();
 function AuthContextProvider({ children }) {
   const [authUser, setAuthUser] = useState("");
   const [sh, setSh] = useState("");
+  const [shD, setShd] = useState("");
 
   const handleSh = (e) => {
     setSh(e.target.value);
+  };
+
+  const handleShD = (e) => {
+    setShd(e.target.value);
   };
 
   useEffect(() => {
@@ -52,7 +57,18 @@ function AuthContextProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{ register, authUser, login, logout, guestId, sh, handleSh }}
+      value={{
+        register,
+        authUser,
+        login,
+        logout,
+        guestId,
+        sh,
+        handleSh,
+        shD,
+        handleShD,
+        setShd,
+      }}
     >
       {children}
     </AuthContext.Provider>

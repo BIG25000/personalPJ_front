@@ -18,7 +18,7 @@ function Header() {
 
   useEffect(() => updateStatus(), []);
 
-  const { sh, handleSh } = useAuth();
+  const { sh, handleSh, shD, handleShD, setShd } = useAuth();
 
   return (
     <div className="navbar bg-greenOne text-egg">
@@ -27,7 +27,13 @@ function Header() {
           เดินปะ
         </Link>
 
-        {pathname == "/allTrip" ? <Search onSh={handleSh} sh={sh} /> : null}
+        {pathname == "/allTrip" ? (
+          <>
+            <Search onSh={handleSh} sh={sh} type="text" />
+            <Search onSh={handleShD} sh={shD} type="date" />
+            <button onClick={() => setShd("")}>RESETDATE</button>
+          </>
+        ) : null}
       </div>
       <div className="justify-self-end">
         <Dropdown />

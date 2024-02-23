@@ -97,7 +97,7 @@ function RegisterForm() {
               <span className="label-text">Password</span>
             </div>
             <input
-              type="text"
+              type="password"
               placeholder="password"
               name="password"
               value={input.password}
@@ -116,7 +116,7 @@ function RegisterForm() {
               <span className="label-text">Confirm Password</span>
             </div>
             <input
-              type="text"
+              type="password"
               placeholder="Confirm password"
               name="confirmPassword"
               value={input.confirmPassword}

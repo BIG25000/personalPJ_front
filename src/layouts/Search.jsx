@@ -1,10 +1,10 @@
 import React from "react";
 
-function Search({ onSh, sh }) {
+function Search({ onSh, sh, type }) {
   return (
     <label className="input input-bordered flex items-center gap-2 bg-egg">
       <input
-        type="text"
+        type={type}
         className="grow  text-greenOne bg-egg"
         placeholder="Search"
         onChange={onSh}
