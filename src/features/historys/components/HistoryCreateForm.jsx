@@ -5,7 +5,7 @@ function HistoryCreateForm({ data }) {
   const { deleteCreateTrip } = allUserCreate();
 
   return (
-    <div className="border p-10 flex justify-around gap-5 items-center text-egg bg-greenTwo rounded-2xl">
+    <div className="border p-10 flex justify-around gap-5 items-center text-egg bg-greenTwo rounded-2xl hover:scale-110 transition">
       <div className="text-center">
         <div>หัวข้อ</div>
         <div>{data.title}</div>
@@ -34,6 +34,7 @@ function HistoryCreateForm({ data }) {
         <button
           className="btn bg-egg on"
           onClick={(e) => {
+            e.preventDefault();
             e.stopPropagation();
             deleteCreateTrip(data.id);
           }}

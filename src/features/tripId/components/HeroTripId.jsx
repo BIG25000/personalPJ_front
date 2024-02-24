@@ -12,7 +12,7 @@ import * as tripApi from "../../../api/trip";
 import PeopleJoinContainer from "../../joinTrip/components/PeopleJoinContainer";
 
 function HeroTripId() {
-  const { editTrip, tripById, setTripById } = useTrip();
+  const { editTrip, tripById, setTripById, getJoinAll, trips } = useTrip();
   const { authUser } = useAuth();
 
   const { tripId } = useParams();
@@ -36,8 +36,6 @@ function HeroTripId() {
   // if (tripById?.userId == authUser?.id) {
   //   setIsOpen(true);
   // }
-
-  console.log(tripById, "--------------------------");
 
   return (
     <>

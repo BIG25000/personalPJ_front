@@ -39,11 +39,15 @@ function HistoryContextProvider({ children }) {
   const deleteCreateTrip = async (id) => {
     await authApi.deleteCreateTrip(id);
     toast.success("delete trip success");
+    const res = await authApi.fetchAllCreate();
+    setAllCreate(res.data.data);
   };
 
   const deleteJoinTrip = async (id) => {
     await authApi.deleteJoinTrip(id);
     toast.success("cancle trip success");
+    const res = await authApi.fetchAll();
+    setALlUser(res.data.data);
   };
 
   return (

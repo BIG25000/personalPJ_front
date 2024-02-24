@@ -76,7 +76,7 @@ function MiddleBar() {
               <div>{startDateCon}</div>
             </div>
             <div>
-              <div className="text-center">วันที่เริ่มทริป</div>
+              <div className="text-center">วันสิ้นสุดทริป</div>
               <div>{endDateCon}</div>
             </div>
             <div>

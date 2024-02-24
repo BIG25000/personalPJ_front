@@ -6,7 +6,7 @@ function HistoryForm({ data }) {
   const { deleteJoinTrip } = allUserCreate();
   return (
     <>
-      <div className="border p-10 flex justify-around gap-5 items-center text-egg bg-greenTwo rounded-2xl">
+      <div className="border p-10 flex justify-around gap-5 items-center text-egg bg-greenTwo rounded-2xl hover:scale-110 transition">
         <div className="text-center">
           <div>หัวข้อ</div>
           <div>{data.title}</div>
@@ -30,7 +30,9 @@ function HistoryForm({ data }) {
         <div>
           <button
             className="btn bg-egg"
+            type="button"
             onClick={(e) => {
+              e.preventDefault();
               e.stopPropagation();
               deleteJoinTrip(data.id);
             }}

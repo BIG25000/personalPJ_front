@@ -4,7 +4,7 @@ function Card({ trip }) {
   console.log(trip);
 
   return (
-    <div className="card card-compact w-[18rem] h-[20rem] bg-greenTwo text-egg shadow-xl">
+    <div className="card card-compact w-[18rem] h-[20rem] bg-greenTwo text-egg shadow-xl hover:scale-110 transition">
       <figure>
         <img className="w-[25rem] h-[10rem]" src={image} alt="Shoes" />
       </figure>

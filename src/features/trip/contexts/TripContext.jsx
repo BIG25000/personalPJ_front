@@ -34,6 +34,7 @@ export default function TripContextProvider({ children }) {
 
   const createTrip = async (formData) => {
     await tripApi.createTrip(formData);
+    // setState ทุกอัน
   };
 
   const createJoinTrip = async (userJoin) => {
