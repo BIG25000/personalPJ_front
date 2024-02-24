@@ -9,7 +9,7 @@ function Modal({ children, title, id, button }) {
       >
         {title}
       </button>
-      <dialog id={id} className="modal ">
+      <dialog id={id} className="modal">
         <div className="modal-box bg-egg">{children}</div>
         <form method="dialog" className="modal-backdrop">
           <button>close</button>

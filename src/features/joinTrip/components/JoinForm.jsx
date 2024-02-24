@@ -18,7 +18,9 @@ function JoinForm() {
       e.preventDefault();
       input.userId = authUser.id;
       input.tripId = findTripById.id;
+
       console.log("*******", input);
+
       await createJoinTrip(input);
       toast.success("join success");
     } catch (err) {

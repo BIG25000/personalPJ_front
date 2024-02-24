@@ -48,24 +48,31 @@ function HeroTripId() {
         </div>
         <div className="flex gap-10 items-center">
           {!(tripById?.userId == authUser?.id) ? (
-            <>
-              <Modal
-                title="เข้าร่วมทริป"
-                id="join"
-                button="btn bg-greenOne text-xl text-egg"
-              >
-                <JoinForm />
-              </Modal>
-            </>
+            tripById?.statusTrip == "PENDING" && (
+              <>
+                <Modal
+                  title="เข้าร่วมทริป"
+                  id="join"
+                  button="btn bg-greenOne text-xl text-egg"
+                >
+                  <JoinForm />
+                </Modal>
+              </>
+            )
           ) : (
             <>
-              <Modal
-                title="Edit Trip"
-                id="editForm"
-                button="btn bg-greenOne text-egg text-xl "
-              >
-                <EditForm onSubmit={submitEditForm} />
-              </Modal>
+              <>
+                {tripById?.statusTrip === "PENDING" && (
+                  <Modal
+                    title="Edit Trip"
+                    id="editForm"
+                    button="btn bg-greenOne text-egg text-xl "
+                  >
+                    <EditForm onSubmit={submitEditForm} />
+                  </Modal>
+                )}
+              </>
+
               <Modal
                 title="ดูจำนวนผู้เข้าร่วมทริป"
                 id="joinAll"

@@ -19,7 +19,7 @@ function HistoryContextProvider({ children }) {
         .then((res) => {
           setALlUser(res.data.data);
         })
-        .catch((err) => {});
+        .catch((err) => console.log(err));
     } else {
     }
   }, []);
@@ -31,7 +31,7 @@ function HistoryContextProvider({ children }) {
         .then((res) => {
           setAllCreate(res.data.data);
         })
-        .catch((err) => {});
+        .catch((err) => console.log(err));
     } else {
     }
   }, []);

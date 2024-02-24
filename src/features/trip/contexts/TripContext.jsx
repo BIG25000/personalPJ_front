@@ -43,6 +43,10 @@ export default function TripContextProvider({ children }) {
 
   const editTrip = async (data, id) => {
     await tripApi.editTrip(data, id);
+    const res = await tripApi.getAllTrip();
+    setTrips(res.data.sumTrip);
+    const res2 = await tripApi.getAllTrip2();
+    setTrips2(res2.data.sumTrip);
   };
 
   const getJoinAll = async (tripId) => {

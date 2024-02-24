@@ -14,3 +14,17 @@
 .moveRightText {
   animation: moveRight 5s linear infinite;
 }
+
+.modal {
+  position: fixed; /* ตำแหน่ง Modal ในหน้าจอ */
+  top: 0; /* สร้างตำแหน่งให้ Modal ของคุณแสดงบนสุดของหน้าจอ */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto; /* สร้างแถบขยายให้กับ Modal เพื่ออนุญาตให้ผู้ใช้สามารถเลื่อนไปมาได้ */
+  z-index: 1000; /* สร้างระดับการแสดงของ Modal */
+}
+.fixed {
+  /* สร้างคุณสมบัติการตั้งค่าที่คุณต้องการ */
+  overflow: hidden;
+}
