@@ -7,12 +7,12 @@ import { useEffect } from "react";
 import useAuth from "../../../hooks/use-auth";
 
 function MiddleBar() {
-  const { tripById, setTripById } = useTrip();
+  const { tripById, setTripById, trips } = useTrip();
   const { authUser } = useAuth();
   // const { trips } = useTrip();
   const { tripId } = useParams();
 
-  console.log(authUser);
+  // console.log(authUser);
 
   // const findTripById = trips.find((el) => el.id == useParams().tripId);
   const startDateCon = new Date(tripById?.startDate).toLocaleDateString(
@@ -30,7 +30,6 @@ function MiddleBar() {
       .getTripById(tripId)
       .then((res) => {
         setTripById(res.data);
-        console.log(res.data);
       })
       .catch((err) => console.log(err));
 

@@ -134,7 +134,7 @@ function TripForm({ onSubmit }) {
             </div>
             <textarea
               className="block w-full outline-none resize-none"
-              rows="10"
+              rows="5"
               placeholder="เดินป่าที่ตาก"
               name="description"
               value={input.description}
@@ -190,7 +190,7 @@ function TripForm({ onSubmit }) {
                 <img
                   src={URL.createObjectURL(image)}
                   alt="post"
-                  className="mx-auto"
+                  className="mx-auto max-h-[15rem]"
                 />
                 <button
                   className="absolute top-1 right-1 font-black"

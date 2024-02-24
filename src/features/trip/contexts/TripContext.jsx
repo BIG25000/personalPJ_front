@@ -13,8 +13,8 @@ export default function TripContextProvider({ children }) {
   const [tripById, setTripById] = useState({});
   const [showJoin, setShowJoin] = useState([]);
 
-  const { pathname } = useLocation();
-  console.log(pathname.split("/")[2]);
+  // const { pathname } = useLocation();
+  // console.log(pathname.split("/")[2]);
 
   useEffect(() => {
     tripApi
@@ -43,11 +43,22 @@ export default function TripContextProvider({ children }) {
 
   const editTrip = async (data, id) => {
     await tripApi.editTrip(data, id);
+
     const res = await tripApi.getAllTrip();
-    setTrips(res.data.sumTrip);
-    const res2 = await tripApi.getAllTrip2();
-    setTrips2(res2.data.sumTrip);
+
+    console.log(res, "resssssssssssssssss");
+
+    const result = res.data.sumTrip.filter((el) => el.id == id);
+    console.log(result, "******************RS******************");
+    setTripById(result[0]);
+    // setTrips(res.data.sumTrip);
+    // console.log(res, "---------------------------");
+    // const res2 = await tripApi.getAllTrip2();
+    // setTrips2(res2.data.sumTrip);
   };
+
+  // console.log(trips, "****************************************");
+  // console.log(trips2, "*****************222222***********************");
 
   const getJoinAll = async (tripId) => {
     const result = await tripApi.getJoinByTripId(tripId);
